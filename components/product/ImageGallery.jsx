@@ -36,7 +36,7 @@ export default function ImageGallery({ images }) {
   }, []);
 
   return (
-    <div className="relative max-w-[450px] mx-auto">
+    <div className="relative max-w-[550px] mx-auto">
       {/* Main image with zoom */}
       <div
         className="relative overflow-hidden rounded-md bg-gray-100 mb-2 aspect-square"

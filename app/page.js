@@ -242,36 +242,34 @@ const product = {
   },
 };
 
+
 export default function ProductPage() {
   const [activeTab, setActiveTab] = useState('description');
 
   return (
     <div className="min-h-screen bg-white">
-      <main>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Product Header - Only visible on mobile */}
-
-
-          <div className="relative">
-            <div className="absolute top-2 right-2 z-10">
+      <main className="w-full">
+        {/* 12-column grid container with 1 column padding on each side */}
+        <div className="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          {/* Wishlist button positioned absolutely in the grid */}
+          <div className="col-span-12 relative">
+            <div className="absolute top-0 right-0 z-10">
               <WishlistButton />
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Product Images */}
-              <div className="md:w-1/2">
-                <ImageGallery images={product.images} />
-              </div>
-              
-              {/* Product Info */}
-              <div className="md:w-1/2">
-                <ProductInfo product={product} />
-              </div>
             </div>
           </div>
 
-          {/* Product Tabs */}
-          <div className="mt-12">
+          {/* Image Gallery - spans 5 columns (leaving 1 empty on left) */}
+          <div className="col-span-12 md:col-start-2 md:col-span-5 lg:col-start-2 lg:col-span-4">
+            <ImageGallery images={product.images} />
+          </div>
+          
+          {/* Product Info - spans 6 columns (leaving 1 empty on right) */}
+          <div className="col-span-12 md:col-span-5 lg:col-span-6 mt-8 md:mt-0">
+            <ProductInfo product={product} />
+          </div>
+
+          {/* Product Tabs - spans 10 columns (centered with 1 empty on each side) */}
+          <div className="col-span-12 md:col-start-2 md:col-span-10 mt-12">
             <Tabs
               activeTab={activeTab}
               setActiveTab={setActiveTab}
@@ -279,60 +277,13 @@ export default function ProductPage() {
             />
           </div>
 
-          {/* Related Products */}
-          <div className="mt-16">
+          {/* Related Products - spans 10 columns (centered with 1 empty on each side) */}
+          <div className="col-span-12 md:col-start-2 md:col-span-10 mt-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">You May Also Like</h2>
             <RelatedProducts products={product.relatedProducts} />
           </div>
         </div>
       </main>
-
-      {/* Footer - Simplified for demo */}
-      {/* <footer className="bg-gray-100 mt-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-900">Shop</h3>
-                            <ul className="mt-4 space-y-2">
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">New Arrivals</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Bestsellers</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Skincare</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Hair Care</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-900">Support</h3>
-                            <ul className="mt-4 space-y-2">
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Contact Us</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">FAQs</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Shipping & Returns</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Track Order</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-900">Company</h3>
-                            <ul className="mt-4 space-y-2">
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">About Us</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Blog</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Careers</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Sustainability</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-900">Connect</h3>
-                            <ul className="mt-4 space-y-2">
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Instagram</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Facebook</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Twitter</a></li>
-                                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">YouTube</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="mt-12 border-t border-gray-200 pt-8">
-                        <p className="text-sm text-gray-500 text-center">© 2025 BJV Cosmetics. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer> */}
     </div>
   );
 }
